@@ -1,0 +1,66 @@
+Curso realizado por midudev
+Link de contenido: https://aprendenode.dev
+
+Palabras: 
+ ND: NODE
+ JS: javaScript
+
+Clase 1: 
+  ¿Qué es ND? 
+    Es un entorno de ejecución de JS.
+    Es asincrono con entras / salida de datos con una arquitectura orientada a eventos. 
+  
+  ¿Qué es V8?
+    Es el motor de JS que utiliza Chrome, hace que se ejecute muy rapido JS
+
+  ¿Qué es que este 'orientado a eventos'?
+    Tiene un bucle, el cual, va manejando las solicitudes que llegan cada vez que tiene un evento. 
+    Esto lo hace un solo tresh (buscar)
+    Va ejecutando tareas mientras espera las respuestas de otras.
+  
+  Luego de intalar todo (node / nvm) a mover las manitas 
+
+  1) En PowerShell:
+    Escribir node y ya estamos listos para correr código.
+    Esta consola ejecuta js como la herramienta de desarrollo del navegador.
+  
+  2) Iniciado el repo creamos index.js y podemos ejecutar el codigo en node como "node index.js"
+
+  3) FUNDAMENTAL: en node no tenemos tenemos "window"
+    Para este problema tenemos un objeto global para los entornos: globalThis 
+    Esta variable, no importa donde este puedo ingresar a ella
+    globalThis => windonw (en navegador)
+    globalThis => nodejs (en node)
+
+    Todas las varialbes que se usan (console, Math ...) salen de globalThis
+
+  4) Patron de diseño: Separar nuestro codigo en diferentes ficheros.
+
+  5) .js: Por defecto usa CommonJS (module.export, requiere)
+    .mjs: Usa ES Modules (Recomendado)
+    .cjs: Usa CommonJS (Mejor no usar, lo usamos hasta poder cambiarlo en pack-json)
+
+    En ESM es obligatorio las extensiones. Los empaquetadores hacen magia para que no la pidan
+
+  6) Módulos nativos: a parter de node 16 se recomienda utilizar node:''
+    os: informacion del sisteama operativo
+    fs: sistema de archivo
+    path:
+
+  7) Metodo sincrono: terminacion Sync
+   Metodo asincrono: sin el Sync
+  
+
+  8) Para pasar a promesas tenemos que estar trabajando con asincrono y solo necesitmas agregar /promises al módulo nativo. Despues de esto podemos usar promesas sin callBack.
+
+  9) Para utilizar await necesitamos trabajar con mjs o funcion auto invocada
+
+  10) Path: Importante siempre unir las rutas con path.join ya que el elemento de union depende del sistema operativo. (console.log(path.sep))
+
+  11) npm: Hay que sepearar lo que es la libreria del comando 
+
+  12) Pasos:
+    npm init (preguntas) o npm init -y 
+  
+  13) Dependencia de desarrollo:
+    EsLint (siempre <3)
