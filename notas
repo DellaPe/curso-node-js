@@ -1,96 +1,88 @@
-Curso realizado por midudev
-Link de contenido: https://aprendenode.dev
+Aquí tienes el texto corregido:
 
-Palabras: 
- ND: NODE
- JS: javaScript
+**Curso realizado por Midudev**
+Link de contenido: [https://aprendenode.dev](https://aprendenode.dev)
 
-Clase 1: 
-  ¿Qué es ND? 
-    Es un entorno de ejecución de JS.
-    Es asincrono con entras / salida de datos con una arquitectura orientada a eventos. 
-  
-  ¿Qué es V8?
-    Es el motor de JS que utiliza Chrome, hace que se ejecute muy rapido JS
+**Clase 1:**
+1. **¿Qué es Node.js?**
+    - Es un entorno de ejecución de JavaScript.
+    - Es asincrónico con entradas/salidas de datos y tiene una arquitectura orientada a eventos.
 
-  ¿Qué es que este 'orientado a eventos'?
-    Tiene un bucle, el cual, va manejando las solicitudes que llegan cada vez que tiene un evento. 
-    Esto lo hace un solo tresh (buscar)
-    Va ejecutando tareas mientras espera las respuestas de otras.
-  
-  Luego de intalar todo (node / nvm) a mover las manitas 
+2. **¿Qué es V8?**
+    - Es el motor de JavaScript que utiliza Chrome, lo que hace que JavaScript se ejecute muy rápido.
 
-  1) En PowerShell:
-    Escribir node y ya estamos listos para correr código.
-    Esta consola ejecuta js como la herramienta de desarrollo del navegador.
-  
-  2) Iniciado el repo creamos index.js y podemos ejecutar el codigo en node como "node index.js"
+3. **¿Qué significa que está "orientado a eventos"?**
+    - Node.js tiene un bucle que maneja las solicitudes que llegan cada vez que ocurre un evento.
+    - Esto se realiza en un solo hilo (thread).
+    - Node.js ejecuta tareas mientras espera respuestas de otras.
 
-  3) FUNDAMENTAL: en node no tenemos tenemos "window"
-    Para este problema tenemos un objeto global para los entornos: globalThis 
-    Esta variable, no importa donde este puedo ingresar a ella
-    globalThis => windonw (en navegador)
-    globalThis => nodejs (en node)
+4. Luego de instalar todo (Node.js / nvm), ¡a trabajar!
 
-    Todas las varialbes que se usan (console, Math ...) salen de globalThis
+5. En PowerShell:
+    - Escribe "node" y ya estás listo para ejecutar código.
+    - Esta consola ejecuta JavaScript como la herramienta de desarrollo del navegador.
 
-  4) Patron de diseño: Separar nuestro codigo en diferentes ficheros.
+6. Después de iniciar el repositorio, crea "index.js" y puedes ejecutar el código en Node.js con "node index.js".
 
-  5) .js: Por defecto usa CommonJS (module.export, requiere)
-    .mjs: Usa ES Modules (Recomendado)
-    .cjs: Usa CommonJS (Mejor no usar, lo usamos hasta poder cambiarlo en pack-json)
+7. **FUNDAMENTAL:** En Node.js, no tenemos "window".
+    - Para este problema, tenemos un objeto global para los entornos: "globalThis".
+    - Esta variable se puede acceder desde cualquier parte.
+    - "globalThis" equivale a "window" en el navegador.
+    - "globalThis" equivale a "nodejs" en Node.js.
+    - Todas las variables que se utilizan (console, Math...) provienen de "globalThis".
 
-    En ESM es obligatorio las extensiones. Los empaquetadores hacen magia para que no la pidan
+8. Patrón de diseño: Separa tu código en diferentes archivos.
 
-  6) Módulos nativos: a parter de node 16 se recomienda utilizar node:''
-    os: informacion del sisteama operativo
-    fs: sistema de archivo
-    path:
+9. Los archivos ".js" por defecto utilizan CommonJS (module.export, require).
+   Los archivos ".mjs" utilizan ES Modules (recomendado).
+   Los archivos ".cjs" utilizan CommonJS (mejor no utilizarlo, se utiliza hasta poder cambiarlo en el "package.json").
+   En ES Modules, es obligatorio usar extensiones, pero los empaquetadores hacen magia para que no sea necesario.
 
-  7) Metodo sincrono: terminacion Sync
-   Metodo asincrono: sin el Sync
-  
+10. **Módulos nativos:** A partir de Node.js 16, se recomienda utilizar "node:''".
+    - "os": información del sistema operativo.
+    - "fs": sistema de archivos.
+    - "path".
 
-  8) Para pasar a promesas tenemos que estar trabajando con asincrono y solo necesitmas agregar /promises al módulo nativo. Despues de esto podemos usar promesas sin callBack.
+11. **Método síncrono:** Termina con "Sync".
+    **Método asíncrono:** No tiene "Sync".
 
-  9) Para utilizar await necesitamos trabajar con mjs o funcion auto invocada
+12. Para pasar a promesas, debes estar trabajando con código asíncrono y simplemente agregar "/promises" al módulo nativo. Después de esto, puedes usar promesas en lugar de callbacks.
 
-  10) Path: Importante siempre unir las rutas con path.join ya que el elemento de union depende del sistema operativo. (console.log(path.sep))
+13. Para utilizar "await", necesitas trabajar con archivos ".mjs" o utilizar una función autoinvocada.
 
-  11) npm: Hay que sepearar lo que es la libreria del comando 
+14. **Path:** Siempre es importante unir las rutas con "path.join" ya que el elemento de unión depende del sistema operativo ("console.log(path.sep)").
 
-  12) Pasos:
-    npm init (preguntas) o npm init -y 
-  
-  13) Dependencia de desarrollo:
-    EsLint (siempre <3)
+15. **npm:** Debes separar la librería del comando.
 
-Clase 2:
-  
-  1) Al iniciar el serividor vemos que si realizamos un request el console.log salta 2 veces. Esto tiene que ver con favicon, la segunda request es para obtenerlo.
+16. **Pasos:**
+    - "npm init" (responde las preguntas) o "npm init -y".
 
-  2) Que es http?
-    Es el "protocolo de transferencia de hipertexto" para transmitir información, el mas usado en internet
-  
-  3) Modo para que se actualize solo el server al aplicar algun cambio
-    node --watch ... (esta en esperimental.)
-      o
-    nodemon (lo malo que es un poco mas lento): no instalar de forma global => "-D"
-      despues en scripts { "dev": nodemon 1.http.js}
-  
-  4) Cabeceras (headers)
-    text/plain
-    text/html
-    image/png
-    image/
-    
-  5) Instalamos la ext Rest Client y creamos el archivo api.http con las petisiones.
+17. **Dependencia de desarrollo:** EsLint (siempre es útil).
 
-  6) Pasos del POST:
-    a) Tenemos que pensar que la data es como una tuberia y va llegando la info de a partes
-    b) Por cada chunk => hacemos algo
-    c) los chunk son binarios => toString
+**Clase 2:**
 
-  7) Todo lo aprendido pasado a express: npm i express -E (Ya que es de pro tiene que ser exacto). Express es un framework
+1. Al iniciar el servidor, notamos que si realizamos una solicitud, el "console.log" se ejecuta dos veces. Esto se debe a la solicitud del favicon; la segunda solicitud es para obtenerlo.
 
-  8) Middleware: En pocas palabras, las request pasan por el, las procesa, next y luego vamos a tratar la request. Podemos usar este paso para validar las request.
+2. **¿Qué es HTTP?**
+    - Es el "Protocolo de Transferencia de Hipertexto" utilizado para transmitir información, ampliamente usado en Internet.
+
+3. Modo para que el servidor se actualice automáticamente al aplicar algún cambio:
+    - "node --watch ..." (experimental)
+    - "nodemon" (un poco más lento): No lo instales de forma global ("-D" para dependencia de desarrollo). Luego, en los scripts: `"dev": "nodemon 1.http.js"`.
+
+4. **Cabeceras (headers):**
+    - text/plain
+    - text/html
+    - image/png
+    - image/
+
+5. Instala la extensión "Rest Client" y crea el archivo "api.http" con las peticiones.
+
+6. Pasos para el POST:
+    a) Piensa que los datos llegan como una tubería y se procesan por partes.
+    b) Por cada "chunk", realiza alguna acción.
+    c) Los "chunks" son binarios y deben convertirse a texto con "toString".
+
+7. Todo lo aprendido se traslada a Express: `npm i express -E` (debe ser exacto ya que es de producción). Express es un framework.
+
+8. **Middleware:** En pocas palabras, las solicitudes pasan por él, se procesan, se llama a "next" y luego se maneja la solicitud. Puedes usar este paso para validar las solicitudes.
