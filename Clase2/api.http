@@ -1,0 +1,17 @@
+### Ir a inicio
+GET http://localhost:1234/
+
+### Ir a pokemon pikachu
+GET http://localhost:1234/pokemon/pikachu
+
+### Para crear un pokemon
+POST http://localhost:1234/pokemon
+Content-Type: application/json
+
+{
+    "name": "test",
+    "type": "electric",
+    "level": 1
+}
+
+

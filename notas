@@ -64,3 +64,33 @@ Clase 1:
   
   13) Dependencia de desarrollo:
     EsLint (siempre <3)
+
+Clase 2:
+  
+  1) Al iniciar el serividor vemos que si realizamos un request el console.log salta 2 veces. Esto tiene que ver con favicon, la segunda request es para obtenerlo.
+
+  2) Que es http?
+    Es el "protocolo de transferencia de hipertexto" para transmitir información, el mas usado en internet
+  
+  3) Modo para que se actualize solo el server al aplicar algun cambio
+    node --watch ... (esta en esperimental.)
+      o
+    nodemon (lo malo que es un poco mas lento): no instalar de forma global => "-D"
+      despues en scripts { "dev": nodemon 1.http.js}
+  
+  4) Cabeceras (headers)
+    text/plain
+    text/html
+    image/png
+    image/
+    
+  5) Instalamos la ext Rest Client y creamos el archivo api.http con las petisiones.
+
+  6) Pasos del POST:
+    a) Tenemos que pensar que la data es como una tuberia y va llegando la info de a partes
+    b) Por cada chunk => hacemos algo
+    c) los chunk son binarios => toString
+
+  7) Todo lo aprendido pasado a express: npm i express -E (Ya que es de pro tiene que ser exacto). Express es un framework
+
+  8) Middleware: En pocas palabras, las request pasan por el, las procesa, next y luego vamos a tratar la request. Podemos usar este paso para validar las request.
