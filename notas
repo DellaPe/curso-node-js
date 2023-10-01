@@ -3,7 +3,10 @@ Aquí tienes el texto corregido:
 **Curso realizado por Midudev**
 Link de contenido: [https://aprendenode.dev](https://aprendenode.dev)
 
-**Clase 1:**
+*-------------------------------------------------------------------------------------------------------------*
+
+*Clase 1:*
+
 1. **¿Qué es Node.js?**
     - Es un entorno de ejecución de JavaScript.
     - Es asincrónico con entradas/salidas de datos y tiene una arquitectura orientada a eventos.
@@ -59,7 +62,9 @@ Link de contenido: [https://aprendenode.dev](https://aprendenode.dev)
 
 17. **Dependencia de desarrollo:** EsLint (siempre es útil).
 
-**Clase 2:**
+*-------------------------------------------------------------------------------------------------------------*
+
+*Clase 2:*
 
 1. Al iniciar el servidor, notamos que si realizamos una solicitud, el "console.log" se ejecuta dos veces. Esto se debe a la solicitud del favicon; la segunda solicitud es para obtenerlo.
 
@@ -87,8 +92,10 @@ Link de contenido: [https://aprendenode.dev](https://aprendenode.dev)
 
 8. **Middleware:** En pocas palabras, las solicitudes pasan por él, se procesan, se llama a "next" y luego se maneja la solicitud. Puedes usar este paso para validar las solicitudes.
 
+*-------------------------------------------------------------------------------------------------------------*
 
-**Clase 3:**
+*Clase 3:*
+
 1. **REST:**
     - Arquitectura de software
     - 2000 - Roy  Fielding
@@ -122,7 +129,7 @@ Link de contenido: [https://aprendenode.dev](https://aprendenode.dev)
     PATCH: Modificar un recurso parcialmente (/movies/:id) (puede ser o no idempotente)
 
 8. **Server**
-    npx server "dirección carpetra": Sirve la pag un un url
+    npx servor "dirección carpetra": Sirve la pag un un url
 
 9. **METODOS**
     Normales: GET - HEAD - POST
@@ -133,3 +140,37 @@ Link de contenido: [https://aprendenode.dev](https://aprendenode.dev)
 
 11. **Problema CORS**
     Otra forma de solucionarlo es npm i cors pero y usar app.use(cors()) pero este usa '*', deja pasar cualqueir origen.
+
+*-------------------------------------------------------------------------------------------------------------*
+
+*Clase 4*
+(Pasar a ESModules)
+
+1. Cambiar el type de modulo en el package.json (que por defencot es "type": "commonjs")
+
+2. Es buena practica poner las terminaciones. A pesar de que ande.
+
+3. No puedes importa json asi como si nada en ES => al import => assert { type : 'json' }
+    Al dia de hoy (1/10/2023) Es experimentar y al usarlo lo dice la consola. Pero pero... ya cambio a with que esta en face 3 pero no se puede usar todavia
+    * del futuro import movies from '...' with { type : 'json' }
+
+    2 formas de hacer esto
+    *   import fs from 'node:fs'
+        const movies = JSON.parse(fs.readFileSync('./movies.js', 'utf-8'))
+    
+    *   import { createRequire } from 'node:module'
+        const require = createRequire(import.meta.url)
+        const movies = require('./movies.json')
+        (Mejor por ahora, ya que es nartiva y no usamos parse)
+
+4. **Router (express)**
+    Nos permite crear un enrutador, que, vamos a poder responder todo los paths
+
+5. **MVC: Modelo Vista Controlador** 
+    Es un patron de arquitectuira que te obliga a separar tu extructura en 3 componentes interconectados
+    * Modelo: Representa la logica del negocio
+    * Controlador: es el que interactura entre el modelo y la vista.
+    * Vista: interfaz del usuario
+
+6. Implemento MVC teniendo como contrato que todo sea una promesa, ya que no sabemos como obtenemos las pelis y va hacer funcional para lo que venga.
+    Ademas, tenemos que manejar los error con un try catch pero lo dejamos para un middlewares
