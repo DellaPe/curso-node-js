@@ -174,3 +174,64 @@ Link de contenido: [https://aprendenode.dev](https://aprendenode.dev)
 
 6. Implemento MVC teniendo como contrato que todo sea una promesa, ya que no sabemos como obtenemos las pelis y va hacer funcional para lo que venga.
     Ademas, tenemos que manejar los error con un try catch pero lo dejamos para un middlewares
+
+*-------------------------------------------------------------------------------------------------------------*
+
+*Clase 5*
+
+1. **Creat base de datos** (Laragon)
+    -- Crear tabla
+DROP DATABASE iF EXISTS movies_database;
+CREATE DATABASE movies_database;
+-- Usar tabla
+USE movies_database;
+-- Creación
+CREATE TABLE movies (
+	id BINARY(16) PRIMARY KEY DEFAULT (UUID_TO_BIN(UUID())),
+	title VARCHAR(255) NOT NULL,
+	year INT NOT NULL, 
+	director VARCHAR(255) NOT NULL,
+	duration SMALLINT UNSIGNED NOT NULL,
+	rate DECIMAL(2,1) UNSIGNED NOT NULL,
+	poster TEXT NOT NULL
+);
+CREATE TABLE genres (
+	id INT AUTO_INCREMENT PRIMARY KEY,
+	`name` VARCHAR(255) NOT NULL UNIQUE
+);
+CREATE TABLE movie_genres (
+    movie_id BINARY(16),
+    genre_id INT,
+    PRIMARY KEY (movie_id, genre_id),
+    FOREIGN KEY (movie_id) REFERENCES movies(id),
+    FOREIGN KEY (genre_id) REFERENCES genres(id)
+);
+INSERT INTO movies (id, title, year, director, duration, rate, poster) VALUES
+(UUID_TO_BIN(UUID()), 'The Dark Knight', 2008, 'Christopher Nolan', 152, 9.0,'https://i.ebayimg.com/images/g/yokAAOSw8w1YARbm/s-l1200.jpg'),
+(UUID_TO_BIN(UUID()), 'Pulp Fiction', 1994, 'Quentin Tarantino', 154, 8.9, 'https://www.themoviedb.org/t/p/original/vQWk5YBFWF4bZaofAbv0tShwBvQ.jpg'),
+(UUID_TO_BIN(UUID()), 'Inception', 2010, 'Christopher Nolan', 148, 8.8, 'https://m.media-amazon.com/images/I/91Rc8cAmnAL._AC_UF1000,1000_QL80_.jpg');
+INSERT INTO genres (`name`) VALUES
+('Drama'), 
+('Action'),
+('Crime'),
+('Adventure'),
+('Sci-Fi'),
+('Romance'),
+('Comedy'),
+('Fantasy'),
+('Biography'),
+('Terror');
+INSERT INTO movie_genres (movie_id, genre_id) VALUES
+((SELECT id FROM movies WHERE title = 'Inception'), (SELECT id FROM genres WHERE `name` = 'Action')),
+((SELECT id FROM movies WHERE title = 'Inception'), (SELECT id FROM genres WHERE `name` = 'Adventure')),
+((SELECT id FROM movies WHERE title = 'Inception'), (SELECT id FROM genres WHERE `name` = 'Sci-Fi')),
+((SELECT id FROM movies WHERE title = 'The Dark Knight'), (SELECT id FROM genres WHERE `name` = 'Action')),
+((SELECT id FROM movies WHERE title = 'The Dark Knight'), (SELECT id FROM genres WHERE `name` = 'Adventure')),
+((SELECT id FROM movies WHERE title = 'The Dark Knight'), (SELECT id FROM genres WHERE `name` = 'Drama')),
+((SELECT id FROM movies WHERE title = 'Pulp Fiction'), (SELECT id FROM genres WHERE `name` = 'Crime')),
+((SELECT id FROM movies WHERE title = 'Pulp Fiction'), (SELECT id FROM genres WHERE `name` = 'Drama'));
+SELECT *, BIN_TO_UUID(id), title, year, director, duration, rate, poster  id FROM movies;
+
+2. **Modelo MySQL**
+    Biblioteca recomendad para conectarme mysql2 (la otra esta vieja pero funca)
+    pnpm i --save mysql2
