@@ -180,7 +180,7 @@ Link de contenido: [https://aprendenode.dev](https://aprendenode.dev)
 *Clase 5*
 
 1. **Creat base de datos** (Laragon)
-    -- Crear tabla
+-- Crear tabla
 DROP DATABASE iF EXISTS movies_database;
 CREATE DATABASE movies_database;
 -- Usar tabla
@@ -235,3 +235,6 @@ SELECT *, BIN_TO_UUID(id), title, year, director, duration, rate, poster  id FRO
 2. **Modelo MySQL**
     Biblioteca recomendad para conectarme mysql2 (la otra esta vieja pero funca)
     pnpm i --save mysql2
+
+3. **Inyeccion de model**
+    Pasar a todas a una funcion flecha y crear una instancia.

@@ -7,8 +7,8 @@ GET http://localhost:1234/movies/1
 ### Películas por id (Pulp Fiction id)
 GET http://localhost:1234/movies/241bf55d-b649-4109-af7c-0e6890ded3fc
 
-### Películas por id (Batman id mySql)
-GET http://localhost:1234/movies/a1285e07-63e8-11ee-acdd-d85ed35a1f2f
+### Películas por id (Batman id mySql) Varia al correr el sql de creacion de la tabla
+GET http://localhost:1234/movies/106b9b96-6480-11ee-a7e2-74d83e5bcf33
 
 ### Películas por genero (query param)
 GET http://localhost:1234/movies?genre=action 

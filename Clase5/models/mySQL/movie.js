@@ -29,25 +29,43 @@ export class MovieModel {
 
       const [movies] = await connection.query(
         // eslint-disable-next-line camelcase
-        'SELECT *, BIN_TO_UUID(id), title, year, director, duration, rate, poster  id FROM movies WHERE id IN (?);', [moviesId.map(({ movie_id }) => movie_id)]
+        'title, year, director, duration, rate, poster, BIN_TO_UUID(id)  id FROM movies WHERE id IN (?);', [moviesId.map(({ movie_id }) => movie_id)]
       )
       return { movies }
     }
     const [movies] = await connection.query( // el otro resultado es tableInfo
-      'SELECT *, BIN_TO_UUID(id), title, year, director, duration, rate, poster  id FROM movies;'
+      'SELECT title, year, director, duration, rate, poster, BIN_TO_UUID(id)  id FROM movies;'
     )
     return { movies }
   }
 
   static async getById ({ id }) {
     const [movie] = await connection.query(
-      'SELECT *, BIN_TO_UUID(id), title, year, director, duration, rate, poster  id FROM movies WHERE id = UUID_TO_BIN(?);', [id]
+      'SELECT title, year, director, duration, rate, poster, BIN_TO_UUID(id)  id FROM movies WHERE id = UUID_TO_BIN(?);', [id]
     )
     return { movie }
   }
 
   static async create ({ movie }) {
+    const { title, year, director, duration, rate, poster } = movie
+    const [uuidResult] = await connection.query('SELECT UUID() uuid;')
+    const uuid = uuidResult[0].uuid
+    try {
+      await connection.query( // aca si puedo inyectar ya que lo estoy controlando y no viene del user (solo uuid)
+        'INSERT INTO movies (id, title, year, director, duration, rate, poster) VALUES (UUID_TO_BIN(?), ?, ?, ?, ?, ?, ?);',
+        [uuid, title, year, director, duration, rate, poster]
+      )
+    } catch (error) {
+      throw new Error('Error al crear la pelicula')
+      // Se podia mandar el error a un servicio de logueo
+    }
 
+    // Al no ser autoincrementar es dificil sacar la id
+    const [muvieResult] = await connection.query(
+      'SELECT title, year, director, duration, poster, rate, BIN_TO_UUID(id) id FROM movies WHERE id = UUID_TO_BIN(?);',
+      [uuid]
+    )
+    return { movie: muvieResult }
   }
 
   static async update ({ id, movie }) {
