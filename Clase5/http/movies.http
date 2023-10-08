@@ -10,6 +10,9 @@ GET http://localhost:1234/movies/241bf55d-b649-4109-af7c-0e6890ded3fc
 ### Películas por id (Batman id mySql) Varia al correr el sql de creacion de la tabla
 GET http://localhost:1234/movies/106b9b96-6480-11ee-a7e2-74d83e5bcf33
 
+### Películas por id (Batman id mongo)
+GET http://localhost:1234/movies/f03c822b-3b77-4727-b58c-8d3a7208389c
+
 ### Películas por genero (query param)
 GET http://localhost:1234/movies?genre=action 
 
@@ -65,6 +68,16 @@ Content-Type: application/json
 "year": 2010
 }
 
+### Actualizar por id (Batman id mongo)
+PATCH http://localhost:1234/movies/f03c822b-3b77-4727-b58c-8d3a7208389c
+Content-Type: application/json
+
+{
+"id": "A este no lo actualiza porque no lo valido en el schema :)",
+"title": "EEE TE CAMBIE",
+"year": 2010
+}
+
 ### Actualizar una película ERROR
 PATCH http://localhost:1234/movies/1
 Content-Type: application/json
@@ -76,6 +89,9 @@ Content-Type: application/json
 
 ### Borrar una película (Batman)
 DELETE http://localhost:1234/movies/c8a7d63f-3b04-44d3-9d95-8782fd7dcfaf
+
+### Borrar una película (Batman mongo)
+DELETE http://localhost:1234/movies/f03c822b-3b77-4727-b58c-8d3a7208389c
 
 ### Borra test
 DELETE http://localhost:1234/movies/381aae76-e02d-40a4-b3fc-7f88612368ec

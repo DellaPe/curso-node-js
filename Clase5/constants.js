@@ -1,5 +1,6 @@
 export const HOME = '/'
 
 export const RESOURCES = {
-  MOVIES: '/movies'
+  MOVIES: '/movies',
+  USERS: '/users'
 }

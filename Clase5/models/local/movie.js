@@ -14,10 +14,12 @@ export class MovieModel {
 
   static async getById ({ id }) {
     const movie = movies.find(movie => movie.id === id)
+    if (!movie) return { hasError: true, error: 'Movie not found' }
     return { movie }
   }
 
   static async create ({ movie }) {
+    // falata validar
     const newMovie = {
       id: randomUUID(),
       ...movie

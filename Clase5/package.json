@@ -5,6 +5,8 @@
   "main": "app.js",
   "type": "module",
   "scripts": {
+    "start": "node ./servers/serverMongodb.js",
+    "start:mongodb": "node --watch ./servers/serverMongodb.js",
     "start:mysql": "node --watch ./servers/serverMySQL.js",
     "start:local": "node --watch ./servers/serverLocal.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,7 +16,10 @@
   "license": "ISC",
   "dependencies": {
     "cors": "2.8.5",
+    "dotenv": "^16.3.1",
     "express": "4.18.2",
+    "mongodb": "^6.1.0",
+    "mongoose": "7.6.0",
     "mysql2": "^3.6.1",
     "zod": "3.22.2"
   },

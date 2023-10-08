@@ -1,0 +1,4 @@
+### Creat new user
+POST http://localhost:1234/users
+Content-Type: application/json
+
