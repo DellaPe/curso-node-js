@@ -238,3 +238,28 @@ SELECT *, BIN_TO_UUID(id), title, year, director, duration, rate, poster  id FRO
 
 3. **Inyeccion de model**
     Pasar a todas a una funcion flecha y crear una instancia.
+
+*-------------------------------------------------------------------------------------------------------------*
+
+*Clase 6*
+
+1)  **HTTP**: (TCP como protocolo de transporte)
+        Statless: Que no tiene estados. => Es cacheable => Que siempre devuelve lo mismo (Se supone)
+        Casos de uso: Recursos (http, js, img), Rest API
+        No event driver: Necesitas siempre pedir.
+
+    Para implementar en http el chat se podria hacer haciendo un metodo "Polling" o Server Events
+    Mandar un get cada x tiempos pero esto es llevar y taer mucha info de mas por cada request 
+    
+    **WEB Sockets**: (TCP como protocolo de transporte)
+        Statful: Tiene estados => No es cacheable
+        Casos de uso: info ida y venida o bidireccional de poca latencia (La diferencia)
+        Event driver
+
+2) Creamos el server normal
+
+3) Instalamos morgan para saver como esta funcando el server => npm i morgan -E
+    Si bien hace mucho que no esta actualizado esta bien preparado para express
+    Alternatiba winston  (Probar con este despues) 
+
+4) process.cwd() direccion donde se inicializo el proceso

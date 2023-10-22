@@ -9,7 +9,11 @@ const PORT = process.env.PORT ?? 3000
 
 const app = express()
 const server = createServer(app)
-const io = new Server(server)
+const io = new Server(server, {
+  connectionStateRecovery: {
+    timeout: 3000
+  }
+})
 
 app.use(logger('dev'))
 
@@ -20,10 +24,9 @@ io.on('connection', (socket) => {
     console.log('One user disconnected')
   })
 
-  // socket.on('message', (message) => {
-  //   console.log(message)
-  //   io.emit('message', message)
-  // })
+  socket.on('chat message', (message) => {
+    io.emit('chat message', message)
+  })
 })
 
 app.get('/', (req, res) => {
